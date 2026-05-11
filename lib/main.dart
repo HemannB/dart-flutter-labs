@@ -1,8 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:questlog/core/router.dart';
 import 'package:questlog/core/theme.dart';
+import 'package:questlog/services/hive_service.dart';
 
-void main() {
-  runApp(const QuestLogApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.light,
+  ));
+
+  await HiveService.init();
+
+  runApp(
+    const ProviderScope(
+      child: QuestLogApp(),
+    ),
+  );
 }
 
 class QuestLogApp extends StatelessWidget {
@@ -10,35 +31,11 @@ class QuestLogApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'QuestLog',
       theme: AppTheme.dark,
+      routerConfig: appRouter,
       debugShowCheckedModeBanner: false,
-      home: const Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('⚔️', style: TextStyle(fontSize: 64)),
-              SizedBox(height: 16),
-              Text(
-                'QuestLog',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 36,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: -1,
-                ),
-              ),
-              SizedBox(height: 8),
-              Text(
-                'building...',
-                style: TextStyle(color: Color(0xFF7A7A9A), fontSize: 14),
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
