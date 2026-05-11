@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="64681328-be35-47bb-814f-029532118f51" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/dart_flutter_labs_android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/dart_flutter_labs_android.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dart_flutter_labs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dart_flutter_labs.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/router.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
