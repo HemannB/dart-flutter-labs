@@ -3,21 +3,14 @@ import 'package:go_router/go_router.dart';
 import 'package:questlog/screens/onboarding/onboarding_screen.dart';
 import 'package:questlog/screens/home/home_screen.dart';
 import 'package:questlog/screens/profile/profile_screen.dart';
-import 'package:questlog/services/hive_service.dart';
+import 'package:questlog/screens/splash/splash_screen.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/',
-  redirect: (context, state) {
-    final done = HiveService.isOnboardingDone();
-    if (!done && state.matchedLocation != '/onboarding') return '/onboarding';
-    if (done && state.matchedLocation == '/onboarding') return '/home';
-    return null;
-  },
+  initialLocation: '/splash',
   routes: [
     GoRoute(
-      path: '/',
-      redirect: (_, __) =>
-      HiveService.isOnboardingDone() ? '/home' : '/onboarding',
+      path: '/splash',
+      builder: (_, __) => const SplashScreen(),
     ),
     GoRoute(
       path: '/onboarding',
